@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, View, Image} from 'react-native'
+import {StyleSheet, Text, View, Image, FlatList} from 'react-native'
 
 
 const TuichItem = ({data}) => (
@@ -16,13 +16,19 @@ const TuichItem = ({data}) => (
 
 export default function TuitchList({tuitchs}) {
   return (
-    <View style={{marginBottom: 20, marginTop: 20}}>
-      {tuitchs.map(data => <TuichItem key={data.id} data={data} />)}
-    </View>
+    <FlatList 
+      style={styles.listContainer}
+      keyExtractor={i => i.id}
+      data={tuitchs}
+      renderItem={({item}) => <TuichItem data={item} />} />
   )
 }
 
 const styles =StyleSheet.create({
+  listContainer: {
+    marginBottom: 20, 
+    marginTop: 20
+  },
   container: {
     padding: 10,
     backgroundColor: '#fff',
