@@ -7,7 +7,7 @@ const TAMANHO_MAXIMO = 140
 export default class NewTuitchView extends React.Component {
   state = { tuitch: '' }
   handleSendPress = () => {
-    console.log(this.state.tuitch)
+    this.props.navigation.state.params.sendTuitch(this.state.tuitch)
   }
   isValidTuitch = () => {
     const {length} = this.state.tuitch
