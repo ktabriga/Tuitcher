@@ -23,9 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.scroll}>
-          <TuitchList tuitchs={tuitchs}/>
-        </ScrollView>
+        <TuitchList tuitchs={tuitchs}/>
       </View>
     );
   }
@@ -35,8 +33,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#E5EBEF'
-  },
-  scroll: {
-    padding: 20,
   }
 });

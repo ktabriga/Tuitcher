@@ -1,5 +1,6 @@
 import React from 'react'
 import {StyleSheet, Text, View, Image, FlatList} from 'react-native'
+import ActionButton from 'react-native-action-button'
 
 
 const TuichItem = ({data}) => (
@@ -16,18 +17,22 @@ const TuichItem = ({data}) => (
 
 export default function TuitchList({tuitchs}) {
   return (
-    <FlatList 
-      style={styles.listContainer}
-      keyExtractor={i => i.id}
-      data={tuitchs}
-      renderItem={({item}) => <TuichItem data={item} />} />
+    <View>
+      <FlatList 
+        contentContainerStyle={styles.listContent}
+        keyExtractor={i => i.id}
+        data={tuitchs}
+        renderItem={({item}) => <TuichItem data={item} />} />
+      <ActionButton
+        buttonColor="rgba(231,76,60,1)"
+        onPress={() => { console.log("hi")}}/>
+    </View>
   )
 }
 
 const styles =StyleSheet.create({
-  listContainer: {
-    marginBottom: 20, 
-    marginTop: 20
+  listContent: {
+    padding: 20
   },
   container: {
     padding: 10,
