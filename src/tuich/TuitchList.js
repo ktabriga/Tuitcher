@@ -1,6 +1,7 @@
 import React from 'react'
 import {StyleSheet, Text, View, Image, FlatList} from 'react-native'
 import ActionButton from 'react-native-action-button'
+import colors from '../theme/colors'
 
 
 const TuichItem = ({data}) => (
@@ -24,7 +25,7 @@ export default function TuitchList({tuitchs, onNewTuitchPress}) {
         data={tuitchs}
         renderItem={({item}) => <TuichItem data={item} />} />
       <ActionButton
-        buttonColor="#269FED"
+        buttonColor={colors.primary}
         fixNativeFeedbackRadius
         onPress={onNewTuitchPress}/>
     </View>
