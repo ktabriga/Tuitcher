@@ -24,7 +24,8 @@ export default function TuitchList({tuitchs}) {
         data={tuitchs}
         renderItem={({item}) => <TuichItem data={item} />} />
       <ActionButton
-        buttonColor="rgba(231,76,60,1)"
+        buttonColor="#269FED"
+        fixNativeFeedbackRadius
         onPress={() => { console.log("hi")}}/>
     </View>
   )
