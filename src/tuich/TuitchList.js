@@ -2,11 +2,14 @@ import React from 'react'
 import {StyleSheet, Text, View, Image, FlatList} from 'react-native'
 import ActionButton from 'react-native-action-button'
 import colors from '../theme/colors'
-
+import moment from 'moment'
 
 const TuichItem = ({data}) => (
   <View style={styles.container}>
-    <Text style={styles.owner}>{data.owner}</Text>
+    <View style={styles.row}>
+      <Text style={styles.owner}>@{data.owner}</Text>
+      <Text style={styles.date}>{moment(data.date).format('DD/MM/YY HH:mm')}</Text>
+    </View>
     <Text style={styles.descricao}>{data.message}</Text>
     <View>
       <Image
@@ -45,6 +48,10 @@ const styles =StyleSheet.create({
   owner: {
     fontWeight: 'bold',
     marginBottom: 10
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   imagem: {
     resizeMode: 'cover',
