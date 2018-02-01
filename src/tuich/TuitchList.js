@@ -15,10 +15,10 @@ const TuichItem = ({data}) => (
   </View>
 )
 
-export default function TuitchList({tuitchs}) {
+export default function TuitchList({tuitchs, onNewTuitchPress}) {
   return (
     <View>
-      <FlatList 
+      <FlatList
         contentContainerStyle={styles.listContent}
         keyExtractor={i => i.id}
         data={tuitchs}
@@ -26,7 +26,7 @@ export default function TuitchList({tuitchs}) {
       <ActionButton
         buttonColor="#269FED"
         fixNativeFeedbackRadius
-        onPress={() => { console.log("hi")}}/>
+        onPress={onNewTuitchPress}/>
     </View>
   )
 }
