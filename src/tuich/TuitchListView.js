@@ -1,6 +1,7 @@
 import React from 'react'
 import TuitchList from './TuitchList'
 import moment from 'moment'
+import {loginService} from '../login'
 
 let tuitchs = [{
   id: 1,
@@ -26,7 +27,12 @@ let tuitchs = [{
 export default class TuitchListView extends React.Component {
   state = {
     tuitchs,
-    login: this.props.navigation.state.params.login
+    login: ''
+  }
+
+  componentDidMount() {
+    loginService.getLogin()
+      .then(login => this.setState({login}))
   }
 
   sendTuitch = message => {

@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Button, Text, TextInput, StyleSheet} from 'react-native'
 import colors from '../theme/colors'
 import {NavigationActions} from 'react-navigation'
+import loginService from './loginService'
 
 export default class LoginView extends React.Component {
   state = {login: ''}
@@ -10,11 +11,11 @@ export default class LoginView extends React.Component {
 
   handleSubmit = () => {
     const {navigation} = this.props
-    const {login} = this.state
+    loginService.login(this.state.login)
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [
-        NavigationActions.navigate({ routeName: 'TuitchListView', params: { login }})
+        NavigationActions.navigate({ routeName: 'TuitchListView'})
       ],
     })
 
@@ -27,7 +28,7 @@ export default class LoginView extends React.Component {
       <View style={styles.container}>
         <Text style={styles.title}>Tuitcher</Text>
         <Text>Usuário</Text>
-        <TextInput 
+        <TextInput
           style={styles.input}
           value={login}
           onChangeText={this.handleLoginChange}

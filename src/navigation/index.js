@@ -1,8 +1,9 @@
+import React from 'react'
 import { StackNavigator } from 'react-navigation'
 import {TuitchListView, NewTuitchView} from '../tuich'
-import {LoginView} from '../login'
+import {LoginView, loginService} from '../login'
 
-export default StackNavigator({
+const routesConfig = {
   LoginView: {
     screen: LoginView,
     navigationOptions: {
@@ -21,4 +22,22 @@ export default StackNavigator({
       headerTitle: 'Novo Tuitch',
     }
   }
-}, {initialRouteName: 'LoginView' })
+}
+
+
+export default class EnhancedNavigator extends React.Component {
+  state = {loading: true}
+
+  async componentDidMount() {
+    const isLogged = await loginService.isLogged()
+    const initialRouteName = isLogged ? 'TuitchListView' : 'LoginView'
+    this.setState({initialRouteName, loading: false})
+  }
+
+  render() {
+    const {initialRouteName, loading} = this.state
+    if (loading) return null
+    const Navigator = StackNavigator(routesConfig, {initialRouteName})
+    return <Navigator />
+  }
+}
