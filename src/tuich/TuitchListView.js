@@ -24,13 +24,16 @@ let tuitchs = [{
 
 
 export default class TuitchListView extends React.Component {
-  state = { tuitchs }
+  state = {
+    tuitchs,
+    login: this.props.navigation.state.params.login
+  }
 
   sendTuitch = message => {
     const {navigation} = this.props
     const newTuitchs = [{
       id: this.state.tuitchs.length + 1,
-      owner: 'euMesmo',
+      owner: this.state.login,
       message,
       date: moment().toISOString()
     }].concat(this.state.tuitchs)
@@ -44,7 +47,7 @@ export default class TuitchListView extends React.Component {
     return (
       <TuitchList
         tuitchs={this.state.tuitchs}
-        onNewTuitchPress={() => 
+        onNewTuitchPress={() =>
             navigation.navigate('NewTuitchView', {sendTuitch: this.sendTuitch})
         }/>
     )

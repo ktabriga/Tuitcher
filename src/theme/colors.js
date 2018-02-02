@@ -1,4 +1,5 @@
 export default {
   primary: '#269FED',
-  white: '#fff'
+  white: '#fff',
+  backgroud: '#E5EBEF'
 }
