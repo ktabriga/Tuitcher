@@ -1,8 +1,8 @@
 import React from 'react'
 import {View, Button, Text, TextInput, StyleSheet} from 'react-native'
 import colors from '../theme/colors'
-import {NavigationActions} from 'react-navigation'
 import loginService from './loginService'
+import {reset} from '../navigation/lib'
 
 export default class LoginView extends React.Component {
   state = {login: ''}
@@ -12,14 +12,7 @@ export default class LoginView extends React.Component {
   handleSubmit = () => {
     const {navigation} = this.props
     loginService.login(this.state.login)
-    const resetAction = NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'TuitchListView'})
-      ],
-    })
-
-    navigation.dispatch(resetAction);
+    reset(navigation, 'TuitchListView')
   }
 
   render() {

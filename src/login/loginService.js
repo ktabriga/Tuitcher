@@ -11,8 +11,11 @@ const isLogged = async () => {
   return !!username
 }
 
+const logout = () => AsyncStorage.setItem('login', '')
+
 export default {
   login,
   getLogin,
-  isLogged
+  isLogged,
+  logout
 }

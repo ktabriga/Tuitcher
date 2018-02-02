@@ -1,7 +1,8 @@
 import React from 'react'
 import { StackNavigator } from 'react-navigation'
 import {TuitchListView, NewTuitchView} from '../tuich'
-import {LoginView, loginService} from '../login'
+import {LoginView, loginService, Sair} from '../login'
+import {reset} from './lib'
 
 const routesConfig = {
   LoginView: {
@@ -12,9 +13,10 @@ const routesConfig = {
   },
   TuitchListView: {
     screen: TuitchListView,
-    navigationOptions: {
+    navigationOptions: ({navigation}) => ({
       headerTitle: 'Tuitcher',
-    }
+      headerRight: <Sair onExit={() => reset(navigation, 'LoginView')} />
+    })
   },
   NewTuitchView: {
     screen: NewTuitchView ,
@@ -23,7 +25,6 @@ const routesConfig = {
     }
   }
 }
-
 
 export default class EnhancedNavigator extends React.Component {
   state = {loading: true}
